@@ -2,7 +2,7 @@
 ListingIQ - core optimizer.
 
 Smoke test: run this directly to optimize one hardcoded listing.
-    python src/optimize.py
+    ~/venvs/listingiq/bin/python src/optimize.py
 """
 
 import os
@@ -50,6 +50,8 @@ You rewrite product listings to convert better without inventing facts.
 Rules:
 - Never invent a material, measurement, certification, or claim that is not
   in the original. If the original does not say it, you may not say it.
+  This includes inferences: do not say how a product feels, fits, wears,
+  performs, or compares unless the original says so.
 - Titles: lead with what the product IS, then the differentiator. Keep under
   70 characters so it does not truncate in search results.
 - Descriptions: open with the benefit, not the feature. Short paragraphs.
@@ -59,7 +61,9 @@ Rules:
   sound like an infomercial.
 
 For `issues`, list what was actually weak in the original - be specific and
-name the real problem, not generic advice."""
+name the real problem, not generic advice. Report at most 5, ordered most
+important first - pick the ones costing the most sales, not every flaw you
+can find."""
 
 
 def optimize(title: str, description: str) -> OptimizedListing:
