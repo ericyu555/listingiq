@@ -5,13 +5,38 @@ Run from the project root:
     ~/venvs/listingiq/bin/streamlit run src/app.py
 """
 
+import os
+
 import streamlit as st
+
+# Streamlit Cloud has no .env file, so bridge its secrets manager into the
+# environment. This MUST happen before importing optimize, because that module
+# builds the Anthropic client at import time. Locally there is no secrets file,
+# st.secrets raises, and optimize falls back to .env as usual.
+try:
+    if "ANTHROPIC_API_KEY" in st.secrets:
+        os.environ["ANTHROPIC_API_KEY"] = st.secrets["ANTHROPIC_API_KEY"]
+except Exception:
+    pass
+
 from optimize import optimize
 
 st.set_page_config(page_title="ListingIQ", page_icon="🛍️", layout="centered")
 
+# Every scan runs on my API key, so a public URL needs a gate. The check is
+# skipped when no ACCESS_CODE is set, which keeps local development friction-free.
+try:
+    _code = st.secrets.get("ACCESS_CODE")
+except Exception:
+    _code = None
+
+if _code:
+    if st.text_input("Access code", type="password") != _code:
+        st.caption("Enter the access code to continue.")
+        st.stop()
+
 st.title("🛍️ ListingIQ")
-st.caption("Paste a product listing. Get an optimized version — and an honest "
+st.caption("Paste a product listing. Get an optimized version, and an honest "
            "read on what was weak about the original.")
 
 
