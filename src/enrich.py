@@ -7,8 +7,8 @@ title/description. Product titles are left alone.
 
 Output is a CSV the store owner reviews and imports herself.
 
-    ~/venvs/listingiq/bin/python src/enrich.py --store needleandthrifted --limit 5
-    ~/venvs/listingiq/bin/python src/enrich.py --store needleandthrifted
+    ~/venvs/listingiq/bin/python src/enrich.py --store your-store-name --limit 5
+    ~/venvs/listingiq/bin/python src/enrich.py --store your-store-name
 """
 
 import argparse

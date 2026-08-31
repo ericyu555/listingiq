@@ -5,5 +5,9 @@ __pycache__/
 .DS_Store
 .streamlit/secrets.toml
 test*.csv
-needleandthrifted_*.csv
+*_enriched.csv
+*_gaps.csv
 deliverables/
+
+# Personal planning notes, kept local
+PLAN.md
