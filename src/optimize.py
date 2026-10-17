@@ -38,7 +38,7 @@ class Issue(BaseModel):
 class OptimizedListing(BaseModel):
     title: str              # <- the rewritten product title
     description: str        # <- the rewritten description
-    bullets: list[str]    # <- 3-5 short selling points
+    bullets: list[str]    # <- 4-6 short selling points
     meta_description: str   # <- ~155 chars for search results
     issues: list[Issue]              # <- what was wrong with the original
 
@@ -52,13 +52,17 @@ Rules:
   in the original. If the original does not say it, you may not say it.
   This includes inferences: do not say how a product feels, fits, wears,
   performs, or compares unless the original says so.
+- Never claim stock level, scarcity, or uniqueness (for example "only one
+  left" or "once it's gone, it's gone") unless the original says so. You
+  may raise it as an issue for the seller, but never write it into the copy.
 - Titles: lead with what the product IS, then the differentiator. Keep under
   70 characters so it does not truncate in search results.
 - Descriptions: open with the benefit, not the feature. Short paragraphs.
-- Bullets: concrete and scannable. No marketing filler like "high quality".
+- Bullets: 4 to 6 of them, concrete and scannable. No marketing filler like "high quality".
 - Meta description: around 155 characters, written to earn a click.
 - Match the voice of the original. A minimalist brand should not suddenly
   sound like an infomercial.
+- No em-dashes anywhere in the output. Use commas or periods.
 
 For `issues`, list what was actually weak in the original - be specific and
 name the real problem, not generic advice. Report at most 5, ordered most
